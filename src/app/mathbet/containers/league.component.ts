@@ -92,6 +92,14 @@ export class LeagueComponent implements OnInit {
     this.underValue = ((home0*away0) + (home1*away0) + (home0*away1) + (home1*away1) + (home2*away0) + (home0*away2)) * 100;
     this.overValue= 100 - this.underValue ;
 
+    this.homeWin = Math.round(this.homeWin * 100) / 100;
+    this.awayWin = Math.round(this.awayWin * 100) / 100;
+    this.draw = Math.round(this.draw * 100) / 100;
+
+    this.gg = Math.round(this.gg * 100) / 100;
+    this.underValue = Math.round(this.underValue * 100) / 100;
+    this.overValue = Math.round(this.overValue * 100) / 100;
+
   }
 
   private factorial(number){
