@@ -25,7 +25,7 @@ export class LeagueComponent implements OnInit {
   public homeWin: number;
   public awayWin: number;
   public draw: number;
-
+  public gg: number;
 
   public leagueAtackStrength: number;
 
@@ -78,14 +78,17 @@ export class LeagueComponent implements OnInit {
     let home0 = this.probabilityCalc(0, predictedHomeGoals);
     let home1 = this.probabilityCalc(1, predictedHomeGoals);
     let home2 = this.probabilityCalc(2, predictedHomeGoals);
+    let home3 = this.probabilityCalc(3, predictedHomeGoals);
 
     let away0 = this.probabilityCalc(0, predictedAwayGoals);
     let away1 = this.probabilityCalc(1, predictedAwayGoals);
     let away2 = this.probabilityCalc(2, predictedAwayGoals);
+    let away3 = this.probabilityCalc(3, predictedAwayGoals);
 
     this.homeWin = this.data.getHomeWin(HomeTeam, AwayTeam);
     this.awayWin = this.data.getAwayWin(HomeTeam, AwayTeam);
     this.draw = this.data.getDraw(HomeTeam, AwayTeam);
+    this.gg =  ((home1*away1) + (home2*away1) + (home1*away2) + (home2*away2) + (home3*away1) + (home3*away2) + (home1*away3) + (home2*away3)) * 100;
     this.underValue = ((home0*away0) + (home1*away0) + (home0*away1) + (home1*away1) + (home2*away0) + (home0*away2)) * 100;
     this.overValue= 100 - this.underValue ;
 
