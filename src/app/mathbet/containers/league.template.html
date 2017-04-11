@@ -1,0 +1,55 @@
+<div *ngIf="isLoaded">
+  <h2>Choose Teams:</h2>
+    <div class="row marketing" [formGroup]="myGroup">
+      <div class="col-lg-6">
+        <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['homeTeam'] && !myGroup.controls.homeTeam.valid}">
+          <label for="exampleInputEmail1">Home Team</label>
+          <select class="form-control"
+                  formControlName="homeTeam">
+              <option value=""></option>
+              <option *ngFor="let team of allTeams" [value]="team">
+                  {{ team }}
+              </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group" [ngClass]="{'has-error': isSubmited && myGroup.controls['awayTeam'] && !myGroup.controls.awayTeam.valid}">
+          <label for="exampleInputEmail1">Away Team</label>
+          <select class="form-control"
+                  formControlName="awayTeam">
+              <option value=""></option>
+              <option *ngFor="let team of allTeams" [value]="team">
+                  {{ team }}
+              </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+  <div *ngIf="showInfo">
+    <div class="row marketing">
+      <div class="col-lg-3">
+          <h4>Over 2.5</h4>
+          <div class="value">{{ overValue }}</div>
+      </div>
+      <div class="col-lg-3">
+          <h4>Under 2.5</h4>
+          <div class="value">{{ underValue }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Home Win</h4>
+          <div class="value">{{ homeWin }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Away Win</h4>
+          <div class="value">{{ awayWin }}</div>
+      </div>
+      <div class="col-lg-2">
+          <h4>Draw</h4>
+          <div class="value">{{ draw }}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
